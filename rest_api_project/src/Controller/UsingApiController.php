@@ -22,29 +22,23 @@ class UsingApiController extends AbstractController
     /**
      * @Route("/question/{lang}", name="question_get", methods={"GET"})
      */
-    public function readcsv(Request $request, $lang): JsonResponse
+    public function readcsv(Request $request, $lang, clientReaderCsv $clienteReadercsv): JsonResponse
     {
         //$tr = new GoogleTranslate('en'); 
         //$tr->setSource(); // Detect language automatically
         //$tr->setTarget($lang); // Translate to Georgian
-
-        //$translatedstring=GoogleTranslate::trans('Hello again', 'en', $lang);   
-
-
+        $file = Reader::createFromPath('%kernel.root_dir%/../src/App/Data/questions.csv');
+        $data =$clienteReadercsv->readingcsv($file);
         $data = json_decode($request->getContent(), true);
 
-        $firstName = $data['firstName'];
-        $lastName = $data['lastName'];
-        $email = $data['email'];
-        $phoneNumber = $data['phoneNumber'];
+        //the translated string is the one wich must be finallyy tranmited
+        //$translatedstring=GoogleTranslate::trans($data, 'en', $lang);   
 
-        if (empty($firstName) || empty($lastName) || empty($email) || empty($phoneNumber)) {
+        if (empty($data) || empty($translatedstring)) {
             throw new NotFoundHttpException('Expecting mandatory parameters!');
         }
 
-        $this->customerRepository->saveCustomer($firstName, $lastName, $email, $phoneNumber);
-
-        return new JsonResponse(['status' => 'Customer created!'], Response::HTTP_CREATED);
+        return new JsonResponse(['response' => $translatedstring], Response::HTTP_CREATED);
     }
 
     /**
@@ -52,6 +46,9 @@ class UsingApiController extends AbstractController
      */
         public function readjson(Request $request): JsonResponse
     {
+
+        //modifiying code for retriving data from readed json file
+
         $data = json_decode($request->getContent(), true);
 
         $firstName = $data['firstName'];
