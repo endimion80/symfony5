@@ -1,16 +1,15 @@
 <?php
-// src/Service/MessageGenerator.php
-namespace App\Service
+namespace App\Services;
 
-Use App\Util\ReaderCsv
+Use App\Util\ReaderCsv;
 
 
-class clientReader
+class clientReaderCsv
 {
     private $reader;
 
     public function __construct(Reader $reader){
-s
+
         $this->reader = $reader;
     }
     public function readingcsv($file)

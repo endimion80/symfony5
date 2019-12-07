@@ -5,14 +5,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class UsingApiController
+Use App\Services\clientReaderCsv;
+ 
+Use App\services\clientReaderJsons;
+
+
+class UsingApiController extends AbstractController
 {
     /*private $customerRepository;
-
-    public function __construct(CustomerRepository $customerRepository)
-    {
-        $this->customerRepository = $customerRepository;
-    }*/		
 
     /**
      * @Route("/question/", name="question_get", methods={"GET"})

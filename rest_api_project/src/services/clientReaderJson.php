@@ -1,8 +1,7 @@
-   <?php
-// src/Service/MessageGenerator.php
-namespace App\Service
+<?php
+namespace App\Services;
 
-Use App\Util\ReaderCsv
+Use App\Util\ReaderCsv;
 
 
 class clientReaderJson
