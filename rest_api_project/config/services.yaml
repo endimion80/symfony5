@@ -25,3 +25,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\services\clientReaderCsv:
+        autowired: true
+
+    App\Util\ReaderCsv:
+        autowired: true
+
+    App\services\clientReaderJsons:
+        autowired: true
+
+    App\Util\ReaderJson:
+        autowired: true
